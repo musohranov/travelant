@@ -1,0 +1,36 @@
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body style="margin: 10px; width: 640px">
+    <!-- Отобразить текст ошибки -->
+    {% if error is not none %}
+        <div class="alert alert-danger" role="alert">
+            <b>Ошибка. Воспользуйтесь инструкцией ниже</b>
+            <br/>
+            {% for line in error.splitlines() %}
+                {{ line }} <br/>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!-- Отобразить инструкцию использования -->
+    <dl>
+        <dt>Графическая карта путешествия муравья</dt>
+        <dd>Для отображения необходимо передать параметры в запросе:</dd>
+            <dd><ul>x: число, координата по оси x</ul></dd>
+            <dd><ul>y: число, координата по оси y</ul></dd>
+            <dd><ul>s: число > 0, максимальная сумма цифр координаты</ul></dd>
+        <dd>Пример
+            <a href="./?x=1000&y=1000&s=25">http://localhost:8080/?x=1000&y=1000&s=25</a></dd>
+        <br/>
+        <dt>Числовой результат</dt>
+        <dd>Для отображения только числового результата, кол-ва ячеек карты путешествия муравья, необходимо добавить
+        параметр onlynumber.
+        <dd>Пример
+        <a href="./?x=1000&y=1000&s=25&onlynumber">http://localhost:8080/?x=1000&y=1000&s=25&onlynumber</a></dd>
+    </dl>
+</body>
+</html>
