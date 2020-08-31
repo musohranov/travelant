@@ -16,8 +16,7 @@ _CellType = Tuple[int, int]
 _CellSetType = Set[_CellType]
 
 
-def get_map(start_point: _CellType,
-            check_availability_cell: Callable[[_CellType], bool]) -> _CellSetType:
+def get_map(start_point: _CellType, check_availability_cell: Callable[[_CellType], bool]) -> _CellSetType:
     """
     Получить карту путешествия
 
@@ -60,14 +59,12 @@ def _get_adjacent_cells(cell: _CellType) -> _CellSetType:
 
 def get_map_with_sum_digits_limit(
         start_point: _CellType,
-        max_sum_digits: int,
-        add_travel_cells_handler: Callable[[_CellSetType], None] = None) -> _CellSetType:
+        max_sum_digits: int) -> _CellSetType:
     """
     Получить карту путешествия вычисленной с ограничением "по сумме цифр координат"
 
     :param start_point: Стартовая точка путешествия
     :param max_sum_digits: Максимальное значение суммы цифр координат ячейки
-    :param add_travel_cells_handler: Обработчик итераций добавления достпынх ячеек
 
     :return: Множество доступных для перемещения ячеек карты
     """

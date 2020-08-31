@@ -3,12 +3,12 @@
 Страница по умолчанию содержит инструкция по использованию. Входные данные задаются в качестве параметров GET запроса.
 """
 
-from typing import Tuple, Set
 import traceback
+from typing import Tuple, Set
 
-from aiohttp import web
 import aiohttp_jinja2
 import jinja2
+from aiohttp import web
 
 from travel import get_map_with_sum_digits_limit
 
@@ -20,7 +20,7 @@ routes = web.RouteTableDef()
 async def get_map(request: web.Request) -> web.Response:
     """
     Обработчик запроса получения карты путешествия
-    :param request: Запрос.
+    :param request: Запрос
     :return: Если при обработке запроса возникла ошибока,
     возвращаем страницу 'help', иначе запрашиваемый результат
     """

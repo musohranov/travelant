@@ -14,7 +14,7 @@ from travel import get_map_with_sum_digits_limit
 
 def run() -> None:
     """
-    Запустить утилиту.
+    Запустить утилиту
     """
 
     try:
