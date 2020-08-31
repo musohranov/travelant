@@ -70,7 +70,7 @@ def get_map_with_sum_digits_limit(
     """
 
     if max_sum_digits <= 0:
-        raise Exception(f'Значение максимума суммы цифр координат "{max_sum_digits}" должна быть больше 0!')
+        raise Exception(f'Значение максимума суммы цифр координат "{max_sum_digits}" должно быть больше 0!')
 
     def _check_availability_cell(cell: _CellType) -> bool:
         """
