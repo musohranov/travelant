@@ -27,18 +27,37 @@ def get_map(start_point: _CellType, check_availability_cell: Callable[[_CellType
     """
 
     travel_map = set()
-    last_cells = {start_point, }
+    processed_cells = {start_point, }
 
-    while last_cells:
+    while processed_cells:
         adjacent_cells = set()
 
-        for cell in last_cells:
+        for cell in processed_cells:
             for adjacent_cell in _get_adjacent_cells(cell):
                 if adjacent_cell not in travel_map and check_availability_cell(adjacent_cell):
                     travel_map.add(adjacent_cell)
                     adjacent_cells.add(adjacent_cell)
 
-        last_cells = adjacent_cells
+        processed_cells = adjacent_cells
+
+    '''
+    Текущая реализация оказалась быстрее на ~5% реализации через стэк - см. ниже. 
+    Хотя этой скоростью можно было бы пожертвовать в угоду более читабельному коду.
+    
+    Алгоритм:
+    1. Из стэка не обработанных ячеек забирается очередная ячейка на обработку
+    2. У ячейки вычисляются соседи
+    3. Все доступные для путешествия соседи добавляются в общую карту путишествия и в стэк не обработанных ячеек
+    4. Переходим к шагу 1
+     
+    processed_cells = [start_point]
+    while processed_cells:
+        cell = processed_cells.pop()
+        for adjacent_cell in _get_adjacent_cells(cell):
+            if adjacent_cell not in travel_map and check_availability_cell(adjacent_cell):
+                travel_map.add(adjacent_cell)
+                processed_cells.append(adjacent_cell)
+    '''
 
     return travel_map
 
